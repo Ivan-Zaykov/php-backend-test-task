@@ -24,8 +24,15 @@ Route::group(
     ],
     function () {
         Route::get(
-            'aircraft_airports/{tail}/{date_from}/{date_to}',
+            'aircraft_airports',
             'ShowController'
-        )->name('aircraft_airports.show');
+        )->name('aircraft_airports.show')
+            ->signatureParameters(
+                [
+                    'tail',
+                    'date_from',
+                    'date_to'
+                ]
+            );
     }
 );
