@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Flight extends Model
+class AircraftAirport extends Model
 {
     use HasFactory;
+
+    protected $table = 'flights';
 
     public function airport()
     {

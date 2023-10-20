@@ -11,6 +11,6 @@ class Aircraft extends Model
 
     public function flights()
     {
-        return $this->hasMany(Flight::class);
+        return $this->hasMany(AircraftAirport::class);
     }
 }
