@@ -23,6 +23,9 @@ Route::group(
         'namespace' => 'App\Http\Controllers\AircraftAirport'
     ],
     function () {
-        Route::get('aircraft_airports', 'ShowController')->name('aircraft_airports.show');
+        Route::get(
+            'aircraft_airports/{tail}/{date_from}/{date_to}',
+            'ShowController'
+        )->name('aircraft_airports.show');
     }
 );
