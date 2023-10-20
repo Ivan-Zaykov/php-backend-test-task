@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\AircraftAirport;
+use App\Models\Flight;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\AircraftAirport;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AircraftAirportResource;
 use App\Models\Aircraft;
-use App\Models\AircraftAirport;
+use App\Models\Flight;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
