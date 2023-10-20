@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /app/laravel
+cd /app/
 if [[ -d "vendor" ]]; then
   echo "vendor directory exists";
 else

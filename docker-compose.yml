@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: docker/php.dockerfile
     volumes:
-      - ./:/app
+      - ./laravel:/app
       - ./entrypoint/start_laravel_dev.sh:/usr/local/bin/docker-php-entrypoint
     tty: true
     working_dir: /app
