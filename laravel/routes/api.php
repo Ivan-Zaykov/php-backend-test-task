@@ -18,3 +18,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(
+    [
+        'namespace' => 'App\Http\Controllers\AircraftAirport'
+    ],
+    function () {
+        Route::get('aircraft_airports', 'ShowController')->name('aircraft_airports.show');
+    }
+);
