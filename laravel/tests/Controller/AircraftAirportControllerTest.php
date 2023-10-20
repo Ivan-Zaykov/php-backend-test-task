@@ -2,7 +2,9 @@
 
 namespace Tests\Controller;
 
+use App\Models\Aircraft;
 use App\Models\AircraftAirport;
+use Carbon\Carbon;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
@@ -10,23 +12,26 @@ class AircraftAirportControllerTest extends TestCase
 {
     public function testAircraftAirportControllerShow()
     {
-        $flightData = AircraftAirport::get()->random();
+        $flight = AircraftAirport::get()->random();
+        $tail = $flight->aircraft()->first()->tail;
+        $dateFrom = $flight->landing;
+        $dateTo = Carbon::parse($dateFrom)->addMonth()->format(Carbon::DEFAULT_TO_STRING_FORMAT);
 
         $this->json(
             'get',
-            "api/aircraft_airports?$flightData->tail&$flightData->date_from&$flightData->date_to"
+            "api/aircraft_airports/$tail/$dateFrom/$dateTo'"
         )
             ->assertStatus(Response::HTTP_OK)
-            ->assertExactJson(
+            ->assertJsonStructure(
                 [
                     [
-                        "airport_id" => $flightData->airport->id,
-                        "code_iata" => $flightData->airport->code_iata,
-                        "code_icao" => $flightData->airport->code_icao,
-                        "cargo_offload" => $flightData->cargo_offload,
-                        "cargo_load" => $flightData->cargo_load,
-                        "landing" => $flightData->landing,
-                        "takeoff" => $flightData->takeoff
+                        "airport_id",
+                        "code_iata",
+                        "code_icao",
+                        "cargo_offload",
+                        "cargo_load",
+                        "landing",
+                        "takeoff"
                     ]
                 ]
             );

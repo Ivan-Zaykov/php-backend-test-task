@@ -15,4 +15,9 @@ class AircraftAirport extends Model
     {
         return $this->belongsTo(Airport::class, 'airport_id2', 'id');
     }
+
+    public function aircraft()
+    {
+        return $this->belongsTo(Aircraft::class);
+    }
 }
