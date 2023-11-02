@@ -19,7 +19,7 @@ class AircraftAirportControllerTest extends TestCase
 
         $this->json(
             'get',
-            "api/aircraft_airports/$tail/$dateFrom/$dateTo'"
+            "api/aircraft_airports?tail=$tail&date_from=$dateFrom&date_to=$dateTo"
         )
             ->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure(

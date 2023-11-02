@@ -15,9 +15,9 @@ class AircraftAirportResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "airport_id" => $this->airport->id,
-            "code_iata" => $this->airport->code_iata,
-            "code_icao" => $this->airport->code_icao,
+            "airport_id" => $this->airport_id,
+            "code_iata" => $this->code_iata,
+            "code_icao" => $this->code_icao,
             "cargo_offload" => $this->cargo_offload,
             "cargo_load" => $this->cargo_load,
             "landing" => $this->landing,
