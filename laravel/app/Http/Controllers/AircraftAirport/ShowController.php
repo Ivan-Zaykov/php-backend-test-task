@@ -37,13 +37,14 @@ class ShowController extends Controller
                 FROM flights
                        JOIN airports ON airport_id2 = airports.id
                        JOIN aircrafts ON flights.aircraft_id = aircrafts.id
-                WHERE tail = '$tail'
+                WHERE tail = ?
                 ORDER BY flights.id) airport_data
             WHERE (landing BETWEEN '$dateFrom' AND '$dateTo' OR takeoff BETWEEN '$dateFrom' AND '$dateTo')
                   OR
                   (landing <= '$dateFrom' AND takeoff >= '$dateTo')
                   OR
-                  (landing <= '$dateTo' AND takeoff is null);"
+                  (landing <= '$dateTo' AND takeoff is null);",
+            [$tail]
         );
 
         return AircraftAirportResource::collection($aircraftFlights);
