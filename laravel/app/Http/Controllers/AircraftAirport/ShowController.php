@@ -33,12 +33,11 @@ class ShowController extends Controller
                          cargo_offload,
                          cargo_load,
                          landing,
-                         LEAD(takeoff) OVER (PARTITION BY aircraft_id ORDER BY takeoff) as takeoff
+                         LEAD(takeoff) OVER (PARTITION BY aircraft_id ORDER BY landing) as takeoff
                 FROM flights
                        JOIN airports ON airport_id2 = airports.id
                        JOIN aircrafts ON flights.aircraft_id = aircrafts.id
-                WHERE tail = ?
-                ORDER BY flights.id) airport_data
+                WHERE tail = ?) airport_data
             WHERE (landing BETWEEN '$dateFrom' AND '$dateTo' OR takeoff BETWEEN '$dateFrom' AND '$dateTo')
                   OR
                   (landing <= '$dateFrom' AND takeoff >= '$dateTo')
